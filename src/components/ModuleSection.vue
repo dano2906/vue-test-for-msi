@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-full flex flex-col items-center justify-start">
         <ul class="flex flex-col items-start justify-center gap-y-2">
-            <Question v-for="({question}, index) in displayQuestions" :key="index" :statement="question" />
+            <QuestionTag v-for="({question,id}, index) in displayQuestions" :key="index" :statement="question" :id="id"/>
         </ul>
         <ul class="flex items-center justify-center gap-x-2">
             <li v-for="(page, index) in availablePages" :key="index" @click="changePage(page)">
@@ -13,7 +13,7 @@
 
 <script setup>
     import { ref,computed } from "vue";
-    import Question from "./Question.vue";
+    import QuestionTag from "./QuestionTag.vue";
     import data from "@/data/questions.json"
     
     const questions = ref(data)
