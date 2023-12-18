@@ -1,6 +1,5 @@
 <script setup>
     import MainLayout from "@/layouts/MainLayout.vue";
-    import ModuleSection from "@/components/ModuleSection.vue"
 </script>
 
 <template>
@@ -9,7 +8,7 @@
             <h1>Header</h1>
         </template>
         <template #content>
-            <ModuleSection />
+            <h2>About page</h2>
         </template>
         <template #footer>
             <h4>Footer</h4>
