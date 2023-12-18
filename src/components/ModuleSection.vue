@@ -1,4 +1,6 @@
 <template>
+    <h1>Módulo {{currentPage}}</h1>
+    <h2>{{50 - Object.keys(answers).length}} preguntas restantes</h2>
     <div class="w-full h-full flex flex-col items-center justify-start">
         <ul class="flex flex-col items-start justify-center gap-y-2">
             <QuestionTag v-for="({question,id}, index) in displayQuestions" :key="index" :statement="question" :id="id"/>
@@ -15,7 +17,10 @@
     import { ref,computed } from "vue";
     import QuestionTag from "./QuestionTag.vue";
     import data from "@/data/questions.json"
-    
+    import {useAnswerStore} from "@/stores/questionsStore"
+
+    const { answers } = useAnswerStore()
+
     const questions = ref(data)
     const currentPage = ref(1)
     const availablePages = computed(()=>{
@@ -30,5 +35,6 @@
     ))
     const changePage = (page) => {
         currentPage.value = page
+        window.scrollTo({top:0,left:0,behavior:"smooth"})
     }
 </script>
